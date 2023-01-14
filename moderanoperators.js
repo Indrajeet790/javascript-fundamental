@@ -1,4 +1,4 @@
-/*
+
 // destructuring array
 "use strict";
 
@@ -18,7 +18,7 @@ const a = arr[0];
 const b = arr[1];
 const c = arr[2];
 
-// destructuring arry
+// destructuring array
 const [x, y, z] = arr;
 console.log(x, y, z);
 console.log(arr);
@@ -29,12 +29,14 @@ console.log(first, second);
 let [main, , secondary] = restaurant.categories;
 console.log(main, secondary);
 /*
+//swaping method 1
 const temp = main;
 main = secondary;
 secondary = temp;
 console.log(main, secondary);
 */
-/*
+
+//method2
 [main, secondary] = [secondary, main];
 console.log(main, secondary);
 
@@ -46,4 +48,4 @@ console.log(starter, mainCource);
 const nested = [2, 4, [5, 6]];
 const [i, , j] = nested;
 console.log(i, j);
-*/
+
