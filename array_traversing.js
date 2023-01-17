@@ -19,3 +19,6 @@ function getElement() {
     alert("please enter valid input");
   }
 }
+
+// ######################################//
+// [60,30,3,9,10,50]
