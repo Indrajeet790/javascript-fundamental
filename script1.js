@@ -3,14 +3,14 @@
 
 console.log(40 + 8 + 23 - 10);
 
-console.log("vijay");
+console.log("Vijay");
 console.log(23);
 
-let firstname = "vijay";
-console.log(firstname);
-console.log(firstname);
-console.log(firstname);
-console.log(firstname);
+let firstName = "Vijay";
+console.log(firstName);
+console.log(firstName);
+console.log(firstName);
+console.log(firstName);
 
 let country = "india";
 console.log(country);
@@ -18,8 +18,8 @@ console.log(country);
 let continent = "Asia";
 console.log(continent);
 
-let poplution = 64377882389294;
-console.log(poplution);
+let population = 64377882389294;
+console.log(population);
 */
 
 // datatype//
@@ -110,16 +110,16 @@ console.log(jonas);
 let age = 17;
  let isOldEnough =
 if (age >= 18) {
-  console.log("vijay can start driveing licence 🚗🚗🚗");
+  console.log("vijay can start driving license 🚗🚗🚗");
 } else {
   let yearleft = 18 - age;
   console.log(yearleft, "you are too young wait for another year");
 }
 */
 
-/*const birtYear = 2004;
+/*const birthYear = 2004;
 let century;
-if (birtYear <= 2000) {
+if (birthYear <= 2000) {
   century = 20;
 } else {
   century = 21;
@@ -146,9 +146,9 @@ let BMIJohn = massJohn / heightJohn ** 2;
 console.log(BMIMark, BMIJohn);
 
 if (BMIMark > BMIJohn) {
-  console.log("mark's BMI is higher than Jhon");
+  console.log("mark's BMI is higher than John");
 } else {
-  console.log("jhon BMI is higher than Mark's");
+  console.log("john BMI is higher than Mark's");
 }
 */
 
@@ -272,7 +272,7 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
 }
 */
 
-//coding challange3 //
+//coding challenge3 //
 /*
 const scoreDolphins = (96 + 108 + 89) / 3;
 const scoreKoalas = (88 + 91 + 110) / 3;
@@ -355,5 +355,3 @@ if (day === "monday") {
   console.log("not a valid day!");
 }
 */
-
-
