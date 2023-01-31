@@ -230,4 +230,89 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = "second wife";
 console.log(restaurantCopy.name);
 console.log(restaurant.name);*/
+
 // ########################################//
+// Rest pattern and parameter
+const restaurant = {
+  name: "classico Italianno",
+  location: "via angelo Tavanti 23,Firenze,Italy",
+  categories: ["Italian", "Bruschetta", "vegetarian", "organic"],
+  staterMenu: ["facaccia", "Bruschetta", "Garlic Bread", "caprese Salad"],
+  mainMenu: ["pizza", "pasta", "Risotto"],
+
+  openingHour: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+
+  order: function (staterIndex, mainIndex) {
+    return [this.staterMenu[staterIndex], this.mainMenu[mainIndex]];
+  },
+  orderDelivery: function ({
+    staterIndex = 1,
+    mainIndex = 0,
+    time = 20.0,
+    address,
+  }) {
+    console.log(
+      `order received! ${this.staterMenu[staterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1},${ing2} and ${ing3}`
+    );
+  },
+  orderPizza: function (mainIngredient, ...otherIngredient) {
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
+};
+
+// 1).destructuring part
+// Spread, because on right of =
+const arr = [1, 2, ...[3, 4]];
+// Rest, because on left side =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
+
+const [pizza, , risotto, ...otherFoods] = [
+  ...restaurant.mainMenu,
+  ...restaurant.staterMenu,
+];
+console.log(pizza, risotto, otherFoods);
+
+// objects
+const { sat, ...weekdays } = restaurant.openingHour;
+console.log(weekdays);
+
+//2).functions
+
+const add = function (...numbers) {
+  // console.log(numbers);
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+    console.log(sum);
+  }
+};
+add(2, 3);
+add(5, 3, 7, 2);
+
+const x = [23, 5, 7];
+add(...x);
+
+// orderPizza
+
+restaurant.orderPizza("mushroom", "onion", "olives", "spinach");
+restaurant.orderPizza("mushroom");
