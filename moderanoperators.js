@@ -1,5 +1,5 @@
 // destructuring array
-// "use strict";
+"use strict";
 /*
 // const restaurant = {
 //   name: "classico Italianno",
@@ -233,6 +233,7 @@ console.log(restaurant.name);*/
 
 // ########################################//
 // Rest pattern and parameter
+/*
 const restaurant = {
   name: "classico Italianno",
   location: "via angelo Tavanti 23,Firenze,Italy",
@@ -316,3 +317,81 @@ add(...x);
 
 restaurant.orderPizza("mushroom", "onion", "olives", "spinach");
 restaurant.orderPizza("mushroom");
+*/
+
+// ########################//
+// short Circuiting(&& and ||)
+const restaurant = {
+  name: "classico Italianno",
+  location: "via angelo Tavanti 23,Firenze,Italy",
+  categories: ["Italian", "Bruschetta", "vegetarian", "organic"],
+  staterMenu: ["facaccia", "Bruschetta", "Garlic Bread", "caprese Salad"],
+  mainMenu: ["pizza", "pasta", "Risotto"],
+
+  openingHour: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+
+  order: function (staterIndex, mainIndex) {
+    return [this.staterMenu[staterIndex], this.mainMenu[mainIndex]];
+  },
+  orderDelivery: function ({
+    staterIndex = 1,
+    mainIndex = 0,
+    time = 20.0,
+    address,
+  }) {
+    console.log(
+      `order received! ${this.staterMenu[staterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1},${ing2} and ${ing3}`
+    );
+  },
+  orderPizza: function (mainIngredient, ...otherIngredient) {
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
+};
+
+console.log("---Or---");
+//  Use any data type, return any data type, short-circuiting
+console.log(1 || "jonas");
+console.log("" || "jonas");
+console.log(undefined || null);
+console.log(true || 0);
+
+console.log(undefined || 0 || "" || "Hello" || 23 || null);
+
+restaurant.numGuest = 34;
+const guest1 = restaurant.numGuest ? restaurant.numGuest : 10;
+console.log(guest1);
+
+const guest2 = restaurant.numGuest || 10;
+console.log(guest2);
+
+// AND operator  only true when all  value will be true
+console.log("---AND---");
+console.log(0 && "jonas");
+console.log(7 && "jonas");
+
+console.log("Hello" && 23 && null && "jonas");
+
+// practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza("mushroom", "spinach");
+}
+restaurant.orderPizza && restaurant.orderPizza("mushroom", "spinach");
