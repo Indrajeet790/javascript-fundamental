@@ -321,6 +321,7 @@ restaurant.orderPizza("mushroom");
 
 // ########################//
 // short Circuiting(&& and ||)
+/*
 const restaurant = {
   name: "classico Italianno",
   location: "via angelo Tavanti 23,Firenze,Italy",
@@ -395,3 +396,60 @@ if (restaurant.orderPizza) {
   restaurant.orderPizza("mushroom", "spinach");
 }
 restaurant.orderPizza && restaurant.orderPizza("mushroom", "spinach");
+*/
+
+// ###############################//
+//The Nullish Coalescing Operator (??)
+const restaurant = {
+  name: "classico Italianno",
+  location: "via angelo Tavanti 23,Firenze,Italy",
+  categories: ["Italian", "Bruschetta", "vegetarian", "organic"],
+  staterMenu: ["facaccia", "Bruschetta", "Garlic Bread", "caprese Salad"],
+  mainMenu: ["pizza", "pasta", "Risotto"],
+
+  openingHour: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+
+  order: function (staterIndex, mainIndex) {
+    return [this.staterMenu[staterIndex], this.mainMenu[mainIndex]];
+  },
+  orderDelivery: function ({
+    staterIndex = 1,
+    mainIndex = 0,
+    time = 20.0,
+    address,
+  }) {
+    console.log(
+      `order received! ${this.staterMenu[staterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1},${ing2} and ${ing3}`
+    );
+  },
+  orderPizza: function (mainIngredient, ...otherIngredient) {
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
+};
+
+// restaurant.numGuest = 0;
+const guest = restaurant.numGuest || 10;
+console.log(guest);
+
+// Nullish: null and undefined(NOT 0 or '')
+const guestCorrect = restaurant.numGuest ?? 10;
+console.log(guestCorrect);
