@@ -400,6 +400,19 @@ restaurant.orderPizza && restaurant.orderPizza("mushroom", "spinach");
 
 // ###############################//
 //The Nullish Coalescing Operator (??)
+/*
+// The Nullish Coalescing Operator (??) concept
+// restaurant.numGuest = 0;
+const guest = restaurant.numGuest || 10;
+console.log(guest);
+
+// Nullish: null and undefined(NOT 0 or '')
+const guestCorrect = restaurant.numGuest ?? 10;
+console.log(guestCorrect);
+*/
+
+// ##########################//
+//Logical  assignment operator
 const restaurant = {
   name: "classico Italianno",
   location: "via angelo Tavanti 23,Firenze,Italy",
@@ -446,10 +459,31 @@ const restaurant = {
   },
 };
 
-// restaurant.numGuest = 0;
-const guest = restaurant.numGuest || 10;
-console.log(guest);
+//
+const rest1 = {
+  name: "Capri",
+  numGuest: 0,
+  // owner: "vijay",
+};
+const rest2 = {
+  name: "la pizza",
+  owner: "raj",
+};
+// rest1.numGuest = rest1.numGuest || 10;
+// rest2.numGuest = rest2.numGuest || 10;
 
-// Nullish: null and undefined(NOT 0 or '')
-const guestCorrect = restaurant.numGuest ?? 10;
-console.log(guestCorrect);
+// OR assignment operator
+// rest1.numGuest ||= 10;
+// rest2.numGuest ||= 10;
+
+// nullish assignment operator
+rest1.numGuest ??= 10;
+rest2.numGuest ??= 10;
+
+// rest1.owner = rest1.owner && "<ANONYMOUS>";
+// rest2.owner = rest2.owner && "<ANONYMOUS>";
+
+rest1.owner &&= "<ANONYMOUS>";
+rest2.owner &&= "<ANONYMOUS>";
+console.log(rest1);
+console.log(rest2);
