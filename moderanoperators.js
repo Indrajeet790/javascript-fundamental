@@ -489,6 +489,7 @@ rest2.owner &&= "<ANONYMOUS>";
 console.log(rest1);
 console.log(rest2);
 */
+// ###################################################//
 
 // 1.coding challenge
 /*
@@ -508,7 +509,7 @@ console.log(rest2);
  'Lewandowski' and 'Kimmich'. Then call the function again with players from game ,scored
 
  */
-
+/*
 const game = {
   team1: "Bayern Munich",
   team2: "Borrussia Dortmund",
@@ -582,3 +583,63 @@ printGoals(...game.scored);
 // 7.
 teams1 < teams2 && console.log("Team 1 is more likely to win");
 teams1 > teams2 && console.log("Team 2 is more likely to win");
+
+*/
+// #######################################################//
+//  Looping Array:The for-of loop
+const restaurant = {
+  name: "classico Italianno",
+  location: "via angelo Tavanti 23,Firenze,Italy",
+  categories: ["Italian", "Bruschetta", "vegetarian", "organic"],
+  staterMenu: ["facaccia", "Bruschetta", "Garlic Bread", "caprese Salad"],
+  mainMenu: ["pizza", "pasta", "Risotto"],
+
+  openingHour: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+
+  order: function (staterIndex, mainIndex) {
+    return [this.staterMenu[staterIndex], this.mainMenu[mainIndex]];
+  },
+  orderDelivery: function ({
+    staterIndex = 1,
+    mainIndex = 0,
+    time = 20.0,
+    address,
+  }) {
+    console.log(
+      `order received! ${this.staterMenu[staterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1},${ing2} and ${ing3}`
+    );
+  },
+  orderPizza: function (mainIngredient, ...otherIngredient) {
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
+};
+const menu = [...restaurant.staterMenu, ...restaurant.mainMenu];
+for (const item of menu) {
+  console.log(item);
+}
+for (const [i, ele] of menu.entries()) {
+  console.log(`${i + 1}: ${ele}`);
+  // for (const item of menu.entries()) {
+  //   console.log(`${item[0] + 1}: ${item[1]}`);
+}
+
+// console.log(...menu.entries());
