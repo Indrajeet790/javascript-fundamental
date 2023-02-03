@@ -587,6 +587,7 @@ teams1 > teams2 && console.log("Team 2 is more likely to win");
 */
 // #######################################################//
 //  Looping Array:The for-of loop
+/*
 const restaurant = {
   name: "classico Italianno",
   location: "via angelo Tavanti 23,Firenze,Italy",
@@ -643,3 +644,51 @@ for (const [i, ele] of menu.entries()) {
 }
 
 // console.log(...menu.entries());
+*/
+
+// ###########################################//
+// Enhanced objects literals
+const weekDays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const openingHour = {
+  [weekDays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekDays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekDays[5]]: {
+    // open: 0,open 24 hours
+    close: 24,
+  },
+};
+
+const restaurant = {
+  name: "classico Italianno",
+  location: "via angelo Tavanti 23,Firenze,Italy",
+  categories: ["Italian", "Bruschetta", "vegetarian", "organic"],
+  staterMenu: ["facaccia", "Bruschetta", "Garlic Bread", "caprese Salad"],
+  mainMenu: ["pizza", "pasta", "Risotto"],
+
+  // ES6 enhanced objects literals
+  openingHour,
+
+  order(staterIndex, mainIndex) {
+    return [this.staterMenu[staterIndex], this.mainMenu[mainIndex]];
+  },
+  orderDelivery({ staterIndex = 1, mainIndex = 0, time = 20.0, address }) {
+    console.log(
+      `order received! ${this.staterMenu[staterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+  orderPasta(ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1},${ing2} and ${ing3}`
+    );
+  },
+  orderPizza(mainIngredient, ...otherIngredient) {
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
+};
