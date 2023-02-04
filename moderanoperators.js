@@ -959,7 +959,7 @@ Pass an Array to the new Set() constructor:
 const letters = new Set(["a","b","c"]);
 
 */
-
+/*
 const orderSet = new Set([
   "pasta",
   "pizza",
@@ -1006,3 +1006,55 @@ console.log(
 );
 
 console.log(new Set("indrajeet").size);
+
+
+
+*/
+// ##################################//
+// Maps
+/*
+1.A Map holds key-value pairs where the keys can be any datatype.
+2.A Map remembers the original insertion order of the keys.
+3.A Map has a property that represents the size of the map.
+*/
+
+// create map
+// maps fundamental
+/*
+const restaurant = new Map();
+restaurant.set("name", "Classico Italiano");
+restaurant.set(1, "bokaro,jharkhand");
+console.log(restaurant.set(2, "Lisbon, pourtgal"));
+
+restaurant
+  .set("categories", ["Italian", "Pizzeria", "vegetarian", "organic"])
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, "we are open:D")
+  .set(false, "we are closed:C");
+console.log(restaurant.get("name"));
+console.log(restaurant.get(true));
+console.log(restaurant.get(1));
+// console.log(restaurant.get(2));
+
+const time = 8;
+console.log(
+  restaurant.get(
+    time > restaurant.get("open") && time < restaurant.get("close")
+  )
+);
+
+console.log(restaurant.has("categories"));
+restaurant.delete(2);
+console.log(restaurant);
+// console.log(restaurant.size);
+// console.log(restaurant.clear);
+
+const arr = [1, 2];
+restaurant.set(arr, "Test");
+restaurant.set(document.querySelector("h1"), "Heading");
+console.log(restaurant);
+console.log(restaurant.size);
+
+console.log(restaurant.get(arr));
+*/
