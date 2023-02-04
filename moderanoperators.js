@@ -878,6 +878,7 @@ Bonus:Create an objects called "scorers" which contains the names of the players
 }
 
 */
+/*
 const game = {
   team1: "Bayern Munich",
   team2: "Borrussia Dortmund",
@@ -937,3 +938,71 @@ for (const [team, odd] of Object.entries(game.odds)) {
   const teamStr = team === "x" ? "draw" : `victory ${game[team]}`;
   console.log(`odd of ${teamStr} ${odd}`);
 }
+*/
+
+// ################################################//
+// Sets
+/*
+1.A JavaScript Set is a collection of unique values.
+2.Each value can only occur once in a Set.
+3.A Set can hold any value of any data type.
+
+// How to Create a Set
+  (A) You can create a JavaScript Set by:
+
+1.Passing an Array to new Set()
+2.Create a new Set and use add() to add values
+3Create a new Set and use add() to add variables
+(B)The new Set() Method
+Pass an Array to the new Set() constructor:
+// Create a Set
+const letters = new Set(["a","b","c"]);
+
+*/
+
+const orderSet = new Set([
+  "pasta",
+  "pizza",
+  "pizza",
+  "Risotto",
+  "pasta",
+  "pizza",
+]);
+console.log(orderSet);
+
+//  you can iterate string also
+console.log(new Set("jonas"));
+
+// find size of set = size()
+console.log(orderSet.size);
+
+// has():-Return true value if value exits
+console.log(orderSet.has("pizza"));
+console.log(orderSet.has("Bread"));
+
+// add():- add new element
+orderSet.add("garlic bread");
+console.log(orderSet);
+
+// delete():delete element from array
+orderSet.delete("Risotto");
+console.log(orderSet);
+
+//  clear():when you can delete all element from array
+// orderSet.clear();
+
+for (const order of orderSet) {
+  console.log(order);
+}
+
+// Example
+const staff = ["waiter", "chef", "waiter", "Manager", "chef", "waiter"];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+// find size
+console.log(
+  new Set(["waiter", "chef", "waiter", "Manager", "chef", "waiter"]).size
+);
+
+console.log(new Set("indrajeet").size);
