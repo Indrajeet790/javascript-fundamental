@@ -779,6 +779,7 @@ if (Users.length > 0) {
 
 // ####################################//
 //Looping objects: object key, value, and Entries
+/*
 const weekDays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 const openingHour = {
   [weekDays[3]]: {
@@ -851,4 +852,88 @@ const entries = Object.entries(openingHour);
 // [key,value]
 for (const [key, { open, close }] of entries) {
   console.log(`on ${key} we open at ${open} and close at ${close}`);
+}
+*/
+
+// #################################################//
+// coding challenge #2
+/*
+let's continue with our football batting app!
+1. Loop over the game,scored array and print each player name to the console,along with the goal number(Example:Goal 1:Lewandowski)
+2. Use a loop to calculate the average odd and log it to the console(we already studied how to calculate average,you can check if you don't remember)
+3. Print the 3 odds to the console,but in a nice formatted way, exactly like this:
+    Odd of victory Bayern Munich:1.33
+    odd of draw:3.25;
+    odd of victory Borrussia Dortmund:.6.5
+
+Get the  team names directly from the game objects, don't hardcode them(except for "draw") 
+HINT:Note how the odds and the game objects have the same property names 😊.
+
+Bonus:Create an objects called "scorers" which contains the names of the players who scored as properties, and the numbers of goals as the value. in this game, it will look like this:
+{
+  Gnarby:1,
+  Hummels:1,
+  Lewandowiski:2
+
+}
+
+*/
+const game = {
+  team1: "Bayern Munich",
+  team2: "Borrussia Dortmund",
+  players: [
+    [
+      "Neuer",
+      "Pavard",
+      "Martinez",
+      "Alaba",
+      "Davies",
+      "Kimmich",
+      "Goretzka",
+      "Coman",
+      "Muller",
+      "Gnarby",
+      "Lewandowski",
+    ],
+    [
+      "burki",
+      "Schulz",
+      "Hummels",
+      "Akanji",
+      "Hakimi",
+      "Weigl",
+      "Witsel",
+      "Hazard",
+      "Brandt",
+      "Sancho",
+      "Gotze",
+    ],
+  ],
+  score: "4:0",
+  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+  date: "Feb 1st,2023",
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+// 1.
+for (const [i, player] of game.scored.entries()) {
+  console.log(`Goal ${i + 1}:${player}`);
+}
+// 2 calculate average part
+const odds = Object.values(game.odds);
+let average = 0;
+for (const odd of odds) average += odd;
+// console.log(average);
+average /= odds.length;
+console.log(average);
+
+// 3
+for (const [team, odd] of Object.entries(game.odds)) {
+  // console.log(team, odd);
+  const teamStr = team === "x" ? "draw" : `victory ${game[team]}`;
+  console.log(`odd of ${teamStr} ${odd}`);
 }
