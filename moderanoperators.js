@@ -697,6 +697,7 @@ const restaurant = {
 
 // #####################################################//
 // Optional chaining
+/*
 const weekDays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 const openingHour = {
   [weekDays[3]]: {
@@ -773,4 +774,81 @@ if (Users.length > 0) {
   console.log(Users[0]?.name);
 } else {
   console.log("user array empty");
+}
+*/
+
+// ####################################//
+//Looping objects: object key, value, and Entries
+const weekDays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const openingHour = {
+  [weekDays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekDays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekDays[5]]: {
+    open: 0,
+    // open 24 hours
+    close: 24,
+  },
+};
+
+const restaurant = {
+  name: "classico Italianno",
+  location: "via angelo Tavanti 23,Firenze,Italy",
+  categories: ["Italian", "Bruschetta", "vegetarian", "organic"],
+  staterMenu: ["facaccia", "Bruschetta", "Garlic Bread", "caprese Salad"],
+  mainMenu: ["pizza", "pasta", "Risotto"],
+
+  // ES6 enhanced objects literals
+  openingHour,
+
+  order(staterIndex, mainIndex) {
+    return [this.staterMenu[staterIndex], this.mainMenu[mainIndex]];
+  },
+  orderDelivery({ staterIndex = 1, mainIndex = 0, time = 20.0, address }) {
+    console.log(
+      `order received! ${this.staterMenu[staterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+  orderPasta(ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1},${ing2} and ${ing3}`
+    );
+  },
+  orderPizza(mainIngredient, ...otherIngredient) {
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
+};
+
+// Property Name( we can  print the keys value of object)
+const properties = Object.keys(openingHour);
+// {
+console.log(properties);
+// console.log(`we are open on ${properties.length} days`);
+// for (const day of Object.keys(openingHour)) {
+//   console.log(day);
+// }
+let openStore = `we are open on ${properties.length} days:`;
+for (const day of properties) {
+  openStore += `${day},`;
+}
+console.log(openStore);
+// }
+
+// Property Values(Here we can print the value of object)
+const values = Object.values(openingHour);
+console.log(values);
+
+// Entires Object(Here  you can print keys and values both simultaneously)
+const entries = Object.entries(openingHour);
+// console.log(entries);
+
+// [key,value]
+for (const [key, { open, close }] of entries) {
+  console.log(`on ${key} we open at ${open} and close at ${close}`);
 }
