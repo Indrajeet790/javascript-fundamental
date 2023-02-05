@@ -1058,3 +1058,84 @@ console.log(restaurant.size);
 
 console.log(restaurant.get(arr));
 */
+// maps iteration
+const weekDays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const openingHour = {
+  [weekDays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekDays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekDays[5]]: {
+    open: 0,
+    // open 24 hours
+    close: 24,
+  },
+};
+
+const restaurant = {
+  name: "classico Italianno",
+  location: "via angelo Tavanti 23,Firenze,Italy",
+  categories: ["Italian", "Bruschetta", "vegetarian", "organic"],
+  staterMenu: ["facaccia", "Bruschetta", "Garlic Bread", "caprese Salad"],
+  mainMenu: ["pizza", "pasta", "Risotto"],
+
+  // ES6 enhanced objects literals
+  openingHour,
+
+  order(staterIndex, mainIndex) {
+    return [this.staterMenu[staterIndex], this.mainMenu[mainIndex]];
+  },
+  orderDelivery({ staterIndex = 1, mainIndex = 0, time = 20.0, address }) {
+    console.log(
+      `order received! ${this.staterMenu[staterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+  orderPasta(ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1},${ing2} and ${ing3}`
+    );
+  },
+  orderPizza(mainIngredient, ...otherIngredient) {
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
+};
+
+const question = new Map([
+  ["question", "What is the best programming language in the world?"],
+  [1, "C"],
+  [2, "Java"],
+  [3, "Python"],
+  [4, "JavaScript"],
+  ["correct", 4],
+  [true, "correct🎉"],
+  [false, "Try again!"],
+]);
+console.log(question);
+
+// convert object to map
+console.log(Object.entries(openingHour));
+const hourMap = new Map(Object.entries(openingHour));
+
+console.log(hourMap);
+
+// Quiz app
+console.log(question.get("question"));
+for (const [key, value] of question) {
+  if (typeof key === "number") console.log(`Answer${key}:${value}`);
+}
+// const answer = Number(prompt("Your answer"));
+const answer = 4;
+console.log(answer);
+
+console.log(question.get(question.get("correct") === answer));
+
+// convert maps to array
+console.log([...question]);
+// console.log(question.entries());
+console.log(...question.keys());
+console.log(...question.values());
