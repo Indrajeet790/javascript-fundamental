@@ -1153,6 +1153,7 @@ let's continue with our football betting app! This time, we have a map with a lo
 4. Loop over the events and log them to the console, marking whether it's in the first half or second half(after 45 min) of the game, like this:
 [FIRST HALF] 17:⚽ GOAL
 */
+/*
 const gameEvents = new Map([
   [17, "⚽GOAL"],
   [36, "🔃Substitution"],
@@ -1192,3 +1193,50 @@ for (const [min, event] of gameEvents) {
   const half = min <= 45 ? "First" : "Second";
   console.log(`[${half} Half] $(min:${event})`);
 }
+*/
+// #######################################################
+//
+// Working with String part-1
+
+const airline = "Tap Air Portugal";
+const plane = "A320";
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log("B737"[0]);
+
+console.log(airline.length);
+console.log("B737".length);
+
+console.log(airline.indexOf("r"));
+console.log(airline.lastIndexOf("r"));
+console.log(airline.indexOf("portugal"));
+
+// slice method
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
+
+console.log(airline.slice(0, airline.indexOf(" ")));
+console.log(airline.slice(airline.lastIndexOf(" ") + 1));
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+const checkMiddleSeat = function (seat) {
+  const s = seat.slice(-1);
+  if (s === "B" || s === "E") {
+    console.log("you got the middle seat😍");
+  } else {
+    console.log("you got lucky 🎉");
+  }
+};
+// B and C are middle seats
+checkMiddleSeat("11B");
+checkMiddleSeat("23C");
+checkMiddleSeat("3E");
+
+console.log(new String("jonas"));
+console.log(typeof new String("jonas"));
+
+console.log(typeof new String("jonas").slice(1));
