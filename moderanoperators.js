@@ -1197,7 +1197,7 @@ for (const [min, event] of gameEvents) {
 // #######################################################
 //
 // Working with String part-1
-
+/*
 const airline = "Tap Air Portugal";
 const plane = "A320";
 
@@ -1240,3 +1240,68 @@ console.log(new String("jonas"));
 console.log(typeof new String("jonas"));
 
 console.log(typeof new String("jonas").slice(1));
+*/
+
+// Working with String part2 //
+
+const airline = "Tap Air Portugal";
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+// fix Capitalization in name
+const passenger = "jOnAS";
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+// check email,or comparing emails
+const email = "hello@vijay.in";
+const loginEmail = " Hello@vijay.in \n";
+
+// converted into lowercase
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+// console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+// Replacing
+const priceUS = "288,97$";
+const priceIn = priceUS.replace("$", "R").replace(",", ".");
+console.log(priceIn);
+
+const announcement =
+  "All passengers come to boarding door 23. Boarding door 23! ";
+console.log(announcement.replace("door", "gate"));
+
+// Regular expression
+console.log(announcement.replace(/door/g, "gate"));
+
+//Three simple method that return booleans
+// These methods are includes start with and ends with
+
+const plane = " Airbus A320neo";
+console.log(plane.includes("A320"));
+console.log(plane.includes("Aib"));
+
+// if (plane.startsWith("Airbus") && plane.endsWith("neo")) {
+//   console.log("part of the new air bus");
+// }
+
+//practice exercise
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  // const baggage = items;
+  if (baggage.includes("knife") || baggage.includes("gun")) {
+    console.log("you are NOT allowed on board");
+  } else {
+    console.log("Welcome aboard");
+  }
+};
+checkBaggage("I have a laptop,so food and a pocket Knife");
+checkBaggage("Socks and camera");
+checkBaggage("Got some snacks and a gun for protection");
