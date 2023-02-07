@@ -129,6 +129,7 @@ const high5 = function () {
 
 // #################################################//
 //Functions Returning Function//
+/*
 const greet = function (greeting) {
   return function (name) {
     console.log(`${greeting} ${name}`);
@@ -145,3 +146,54 @@ greet("Hello")("vijay");
 // One arrow function returning another arrow function
 const greetArr = (greeting) => (name) => console.log(`${greeting} ${name}`);
 greetArr("hey")("sam");
+*/
+
+// ###################################################//
+// The "call" and "apply" method
+const indigo = {
+  airline: "indigo",
+  iataCode: "IN",
+  bookings: [],
+  // book:function(){ }
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode} ${flightNum}`
+    );
+    this.bookings.push({ flight: ` ${this.iataCode}${flightNum}`, name });
+  },
+};
+indigo.book(234, "vijay gupta");
+indigo.book(567, "Nikita");
+console.log(indigo);
+
+// example2
+
+const euroWings = {
+  airline: "EuroWings",
+  iataCode: "EW",
+  bookings: [],
+};
+const book = indigo.book;
+
+book.call(euroWings, 236, "sarah willams");
+console.log(euroWings);
+
+book.call(indigo, 456, "priya");
+console.log(indigo);
+
+// example3
+const swiss = {
+  airline: "Swiss Air Line",
+  iataCode: "SW",
+  bookings: [],
+};
+book.call(swiss, 432, "Anil");
+console.log(swiss);
+
+// apply method
+const flightData = [583, "gupta"];
+// book.apply(swiss, flightData);
+console.log(swiss);
+
+//new way to use
+book.call(swiss, ...flightData);
