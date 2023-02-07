@@ -25,6 +25,7 @@ createBooking("LH123", 5);
 */
 
 // How passing Argument works:value vs. Reference
+/*
 const flight = "LH123";
 const vijay = {
   name: "vijay Gupta",
@@ -54,3 +55,73 @@ newPassport(vijay);
 checkIn(flight, vijay);
 
 // javascript does not have passing by reference only passing by value
+*/
+
+// ###########################################//
+// First-Class and Higher-Order function
+/*
+=>first-Class Functions
+1.javascript treats function as first-class-citizens
+2.This means that function are simply values
+3.Function are just another"type" of object
+
+*/
+
+// function A() {
+//   return (function () {
+//     console.log("hello");
+//   })();
+// }
+
+// A(3, 5);
+
+// function A(B) {
+//   return B;
+// }
+// A();
+
+// function B() {
+//   console.log("Hello");
+// }
+// B();
+
+// Higher-order-functions
+// A function that receives another function as an argument that return a new function,or both
+// This is only possible because pf first-class functions
+
+// Function that receive another function
+// const greet = () => console.log("hey vijay");
+// btnClose.addEventListener("click", greet);
+
+// 2.function that returns new function
+// function count() {
+//   let counter = 0;
+//   return function () {
+//     counter++;
+//   };
+// }
+
+// #################//
+// Higher-order function
+
+const oneWord = function (str) {
+  return str.replace(/ /g, "").toLowerCase();
+};
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(" ");
+  return [first.toUpperCase(), ...others].join("");
+};
+// Higher-order functions
+const transformer = function (str, fn) {
+  console.log(`Original string:${str}`);
+  console.log(`Transformed string:${fn(str)}`);
+  console.log(`Transformed by:${fn.name}`);
+};
+transformer("javascript is the best!", upperFirstWord);
+
+// js uses callback all the time
+const high5 = function () {
+  console.log("✋");
+};
+// document.body.addEventListener("click", high5);
+["jonas", "vijay", "adam"].forEach(high5);
