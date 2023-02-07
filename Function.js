@@ -103,7 +103,7 @@ checkIn(flight, vijay);
 
 // #################//
 // Higher-order function
-
+/*
 const oneWord = function (str) {
   return str.replace(/ /g, "").toLowerCase();
 };
@@ -125,3 +125,23 @@ const high5 = function () {
 };
 // document.body.addEventListener("click", high5);
 ["jonas", "vijay", "adam"].forEach(high5);
+*/
+
+// #################################################//
+//Functions Returning Function//
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+const greeterHey = greet("Hey");
+greeterHey("vijay");
+greeterHey("sam");
+
+// call greet function
+greet("Hello")("vijay");
+
+// same code with  written arrow function
+// One arrow function returning another arrow function
+const greetArr = (greeting) => (name) => console.log(`${greeting} ${name}`);
+greetArr("hey")("sam");
