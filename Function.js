@@ -150,6 +150,7 @@ greetArr("hey")("sam");
 
 // ###################################################//
 // The "call" and "apply" method
+/*
 
 const indigo = {
   airline: "indigo",
@@ -222,6 +223,7 @@ document.querySelector(".buy").addEventListener("click", indigo.buyPlane.bind(in
 */
 
 // partial application
+/*
 const addTax = (rate, value) => value + value * rate;
 console.log(addTax(0.1, 200));
 
@@ -239,3 +241,109 @@ const addTaxRate = function (rate) {
 const addVAT2 = addTaxRate(0.23);
 console.log(addVAT2(100));
 console.log(addVAT2(23));
+*/
+
+// #######################3
+// Immediately invoked function expression(iife)
+/*
+const runOnce = function () {
+  console.log("This will never run again");
+};
+runOnce();
+
+// immediately invoked function
+(function () {
+  console.log("This will never run again");
+})();
+
+//2nd way
+(() => console.log("This will  also never run again"))();
+*/
+
+// closure in javascript
+// example 1
+const userName = "vijay";
+function login() {
+  const password = "secret";
+  console.log(`${userName} is loging in us ${password}`);
+}
+login();
+
+// example 2
+function callApi(method) {
+  return function (url) {
+    // api call
+    console.log(`Fetching data from ${url} using ${method}`);
+  };
+}
+const url = "http://example.com/api";
+callApi("GET")(url);
+
+// example3
+function updateWrapper() {
+  let count = 0;
+  return function () {
+    count++;
+    console.log(count);
+  };
+}
+
+const updateCount = updateWrapper();
+updateCount();
+updateCount();
+updateCount();
+
+// example 4:ECommerce:WEbsite(Cart-counter)
+function CartCounter() {
+  let _count = 0;
+  function _updateCount(val) {
+    _count = _count + val;
+  }
+  return {
+    increment() {
+      _updateCount(1);
+    },
+    decrement() {
+      _updateCount(-1);
+    },
+    value() {
+      return _count;
+    },
+  };
+}
+const cartCounter = CartCounter();
+cartCounter.increment();
+cartCounter.increment();
+cartCounter.decrement();
+console.log(cartCounter.value());
+
+// useState :hook clone
+
+function useState(initial) {
+  let _state = initial;
+  function setState(value) {
+    _state = value;
+  }
+  function getState() {
+    return _state;
+  }
+  return [getState, setState];
+}
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  return {
+    click() {
+      setCount(count() + 1);
+    },
+
+    Render() {
+      console.log("value:", count());
+    },
+  };
+}
+const counter = Counter();
+counter.click();
+counter.Render();
+counter.click();
+counter.Render();
