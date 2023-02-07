@@ -150,6 +150,7 @@ greetArr("hey")("sam");
 
 // ###################################################//
 // The "call" and "apply" method
+
 const indigo = {
   airline: "indigo",
   iataCode: "IN",
@@ -197,3 +198,44 @@ console.log(swiss);
 
 //new way to use
 book.call(swiss, ...flightData);
+
+// #########################################
+// Bind method
+const bookEW = book.bind(euroWings);
+const bookIN = book.bind(indigo);
+const bookSW = book.bind(swiss);
+
+bookEW(436, "Monika");
+
+const bookEw23 = book.bind(euroWings, 23);
+bookEw23("Sweta");
+bookEw23("Rani");
+
+// example:with EventListeners
+/*indigo.planes = 300;
+indigo.buyPlane = function () {
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+};
+document.querySelector(".buy").addEventListener("click", indigo.buyPlane.bind(indigo));
+*/
+
+// partial application
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+// addVAT=value => value+value*0.23
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+// challenge :one function return another function
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT2(100));
+console.log(addVAT2(23));
